@@ -3,23 +3,18 @@ main = "index.ts"
 compatibility_date = "2026-09-01"
 compatibility_flags = ["nodejs_compat", "brotli_content_encoding"]
 
-# Custom domain bound to this Worker (must be a zone in the same account).
-# Public access is via the custom domain only.
-workers_dev = false
+# Keep the *.workers.dev hostname as a fallback channel (note: blocked in
+# mainland China). Set to false to expose the custom domain only.
+workers_dev = true
 preview_urls = false
+
+# Primary public endpoint.
 [[routes]]
-pattern = "ts-api.tundrey.com"
-custom_domain = true
-[[routes]]
-pattern = "chelaile-api-docs.tundrey.com"
+pattern = "bus.duxinlovefbj.uk"
 custom_domain = true
 
-[vars]
-# Static city dataset (GitHub / jsDelivr). Falls back to the bundled
-# data/cities.json and then to the upstream API if unreachable.
-DATA_BASE_URL = "https://cdn.jsdelivr.net/gh/Justintunsday/chelaile-api-server@main/data"
-# CORS_ORIGIN = "*"
-# API_KEY is a secret: `npx wrangler secret put API_KEY -c worker/wrangler.toml`
+# Dataset: DATA_BASE_URL intentionally unset — the Worker falls back to the
+# bundled data/cities.json (origin: "file"), then to the upstream API.
 
 [observability]
 enabled = true
