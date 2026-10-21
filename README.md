@@ -1,5 +1,21 @@
 # Chelaile API (chelaile-api-server)
 
+## Bus Minder fork
+
+This fork is maintained at <https://github.com/duxinlovefbj/chelaile-api-server> for the Bus Minder watch app.
+The original project is <https://github.com/Justintunsday/chelaile-api-server>; its MIT license and attribution are retained.
+
+- `origin`: this fork. `upstream`: the original project.
+- `worker/wrangler.toml` targets `bus.duxinlovefbj.uk`, keeps the workers.dev endpoint enabled, and uses the bundled city dataset.
+- Synchronizing source code does not deploy the production Worker. Deployments are a separate operation.
+- Generated Wrangler bundles and source maps are excluded from Git.
+- Bus Minder records the exact backend commit using its `chelaile-api-server` Git submodule. After updating this fork, update and commit the submodule pointer in Bus Minder as well.
+
+To bring in upstream changes, fetch and merge `upstream/main`, run the build and tests, then push to `origin/main`.
+On a fresh clone, first add the upstream remote with `git remote add upstream https://github.com/Justintunsday/chelaile-api-server.git`.
+
+The upstream project documentation follows.
+
 A **read-only HTTP JSON API** for [Chelaile](https://web.chelaile.net.cn) realtime transit data:
 line schedules, live vehicle positions, nearby stops, keyword search, route geometry, and bus/metro journey planning.
 No login or account is required. The original MCP service remains available for Claude Code and Cursor.
